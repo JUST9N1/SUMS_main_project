@@ -1,0 +1,18 @@
+			Welcome to SUMS food
+
+Bill Number : 2523
+Customer Name: Sujan
+Phone Number: 465464489498
+*************************************************************
+ Products 			 QTY			Price 
+*************************************************************
+ Cake			 1			100
+ Sandwich			 2			150
+ IceTea			 5			300
+ French Fries			 3			450
+=============================================================
+ Items Tax 				Rs 12.5
+ Drinks Tax 				Rs 15.0
+ Specials Tax 				Rs 22.5
+ Total Bill :  				1050.0
+=============================================================
