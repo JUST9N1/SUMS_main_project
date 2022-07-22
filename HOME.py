@@ -2,6 +2,7 @@
 
 from tkinter import *
 from PIL import ImageTk, Image
+import project1
 
 window = Tk()
 window.title("SUMS FOOD")
@@ -19,23 +20,23 @@ F1.place(x=0, y=0, width= 1350)
 
 h1_lbl = Label(F1, text= "SUMS FOOD", font= ("times new roman", 15, "bold"),width=15, fg="#D98141",bg="white",bd = 12 ).grid(row= 0, column= 0, padx=10, pady=10, sticky="w")
 
-login_btn = Button(F1, text="LOGIN", fg="#D98141",bg="white", font= font1, pady=10, padx=10)
+login_btn = Button(F1, text="LOGIN", fg="#D98141",bg="white", font= font1, pady=10, padx=10,command= project1.login)
 login_btn.place(x= 1050, y=0)
 
-signUp_btn = Button(F1, text="SIGNUP",  fg="#D98141",bg= "white", font= font1, pady=10, padx=10)
+signUp_btn = Button(F1, text="SIGNUP",  fg="#D98141",bg= "white", font= font1, pady=10, padx=10, command=project1.SignUP)
 signUp_btn.place(x=1170, y=0)
 
 
 h2_lbl = Label(window, text= "What do you feel like today?", font= ("times new roman", 30, "bold"),bg="#333333", fg="#D98141",bd = 12 )
-h2_lbl.place(x=25, y= 100)
+h2_lbl.place(x=0, y= 100)
 
 
 search_entry = Entry(window,highlightcolor="black",bd=2,  highlightbackground="black", width=40, font= font1, bg="#262626", fg="white")
 search_entry.insert(0, "Search here for food or resturants..")
-search_entry.place(x = 25, y= 200)
+search_entry.place(x = 0, y= 200)
 
 search_btn = Button(window, text="SEARCH",  fg="#D98141",bg= "white", pady=3, padx=3)
-search_btn.place(x=435, y= 200)
+search_btn.place(x=409, y= 200)
 
 # F3 = LabelFrame(window).pack()
 
