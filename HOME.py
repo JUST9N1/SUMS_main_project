@@ -2,7 +2,7 @@
 
 from tkinter import *
 from PIL import ImageTk, Image
-import project1
+# import project1
 
 window = Tk()
 window.title("SUMS FOOD")
@@ -20,10 +20,10 @@ F1.place(x=0, y=0, width= 1350)
 
 h1_lbl = Label(F1, text= "SUMS FOOD", font= ("times new roman", 15, "bold"),width=15, fg="#D98141",bg="white",bd = 12 ).grid(row= 0, column= 0, padx=10, pady=10, sticky="w")
 
-login_btn = Button(F1, text="LOGIN", fg="#D98141",bg="white", font= font1, pady=10, padx=10,command= project1.login)
+login_btn = Button(F1, text="LOGIN", fg="#D98141",bg="white", font= font1, pady=10, padx=10)
 login_btn.place(x= 1050, y=0)
 
-signUp_btn = Button(F1, text="SIGNUP",  fg="#D98141",bg= "white", font= font1, pady=10, padx=10, command=project1.SignUP)
+signUp_btn = Button(F1, text="SIGNUP",  fg="#D98141",bg= "white", font= font1, pady=10, padx=10)
 signUp_btn.place(x=1170, y=0)
 
 

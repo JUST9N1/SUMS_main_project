@@ -1,4 +1,4 @@
-
+import webbrowser
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
@@ -233,6 +233,7 @@ def SignUP():
     img3_label = Label(image=facBok_btn)
 
     my_button3 = Button(root, image=facBok_btn,bg="light grey", borderwidth=0)
+    my_button3.bind("<Button-1>", lambda x: webbrowser.open_new("https://www.facebook.com"))
     my_button3.place(x= 600, y= 480)
 
     # Google button
@@ -241,6 +242,7 @@ def SignUP():
     img4_label = Label(image=Google_btn)
 
     my_button4 = Button(root, image=Google_btn,bg="light grey", borderwidth=0)
+    my_button4.bind("<Button-1>", lambda x: webbrowser.open_new("https://www.google.com"))
     my_button4.place(x= 850, y= 480)
 
     acntLbl = Label(root, text="Already have an account?..",  bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
