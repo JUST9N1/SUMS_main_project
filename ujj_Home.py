@@ -8,6 +8,25 @@ from PIL import ImageTk, Image
 import os
 
 
+def AboutUs():
+    global main1
+    main1 = Tk()
+    main1.title("SUMS FOOD")
+    main1.geometry("1650x1000")
+
+    my_Image = ImageTk.PhotoImage(Image.open("Frame 2-2 1.png"))
+    myLabel = Label(main1, image=my_Image)
+    myLabel.place(x=0, y=0)
+
+    ext_btn = Button(main1, text="Exit", relief=SOLID, bg= "#F5B85B",width=19,pady=6, fg="white", font=("times new roman", 20, "bold"), borderwidth=0, command= backSigup)
+    ext_btn.place(x= 175, y= 634)
+
+    main1.mainloop()
+
+def backSigup():
+    main1.destroy()
+    print(SignUP())
+
 
 def mainfunc():
     nextpage = SignUP()
@@ -15,6 +34,11 @@ def mainfunc():
 
 
 def register():
+    global full_nameinfo
+    global contactinfo
+    global emailinfo
+    global passwordinfo
+    global cpasswordinfo
     full_nameinfo = fullName.get()
     contactinfo = contact.get()
     emailinfo = Email.get()
@@ -43,15 +67,6 @@ def register():
         file.close()
         messagebox.showinfo("Success", "SignUp success go to login page.")
 
-
-    # file = open(emailinfo, "w")
-    # file.write(full_nameinfo+ "\n")
-    # file.write(contactinfo+ "\n")
-    # file.write(emailinfo+ "\n")
-    # file.write(passwordinfo+ "\n")
-    # file.write((cpasswordinfo+ "\n"))
-    # file.close()
-
     fullNameEntry.delete(0, END)
     ContactNumEntr1.delete(0, END)
     emailEntr1.delete(0, END)
@@ -62,11 +77,20 @@ def call():
     screen.destroy()
     print(SignUP())
 
+def call2():
+    screen.destroy()
+    print(AboutUs())
+
+def signupcall():
+    root1.destroy()
+    print(AboutUs())
+
 def loginstat():
     username1 = info.get()
     password = paswrd.get()
     email1Entry.delete(0, END)
     password1Entry.delete(0, END)
+
 
     list_of_files = os.listdir()
     if username1 in list_of_files:
@@ -74,6 +98,7 @@ def loginstat():
         verify = file1.read().splitlines()
         if password in verify:
             class Bill_App:
+                screen.destroy()
                 def __init__(self, root):
                     self.root = root
                     self.root.geometry("1350x700+0+0")
@@ -90,7 +115,6 @@ def loginstat():
                     self.Pizza = IntVar()
                     self.MoMo = IntVar()
                     self.DrumStick = IntVar()
-
                     # ******************************Drinks******************
                     self.Lassi = IntVar()
                     self.Coffee = IntVar()
@@ -132,12 +156,13 @@ def loginstat():
                     F1.place(x=0, y=80, relwidth=1)
 
                     cname_lbl = Label(F1, text="Customer Name", bg=bg_color, fg="white", font=font).grid(row=0,column=0,padx=20,pady=5)
-                    cname_txt = Entry(F1, width=15, textvariable=self.c_name, font=("aerial", 15), bd=7,
-                                      relief=SUNKEN).grid(row=0, column=1, pady=5, padx=10)
+                    cname_txt = Entry(F1, width=15, textvariable=self.c_name, font=("aerial", 15), bd=7,relief=SUNKEN)
+                    cname_txt.insert(0, username1)
+                    cname_txt.grid(row=0, column=1, pady=5, padx=10)
 
                     cphn_lbl = Label(F1, text="Phone No.", bg=bg_color, fg="white", font=font).grid(row=0, column=2,padx=20, pady=5)
-                    cphn_txt = Entry(F1, width=15, textvariable=self.c_phone, font=("aerial", 15), bd=7,
-                                     relief=SUNKEN).grid(row=0, column=3, pady=5, padx=10)
+                    cphn_txt = Entry(F1, width=15, textvariable=self.c_phone, font=("aerial", 15), bd=7,relief=SUNKEN)
+                    cphn_txt.grid(row=0, column=3, pady=5, padx=10)
 
                     cbill_lbl = Label(F1, text="Bill Number", bg=bg_color, fg="white", font=font).grid(row=0, column=4,padx=20, pady=5)
                     cbill_txt = Entry(F1, width=15, textvariable=self.search_bill, font=("aerial", 15), bd=7,
@@ -525,7 +550,7 @@ def loginstat():
 
 
 def login():
-    root.destroy()
+    root1.destroy()
     # import main
     global screen
     global info
@@ -548,7 +573,7 @@ def login():
     logo_btn = PhotoImage(file="signup_material/lOGO.png")
     img_label = Label(image=logo_btn)
 
-    my_button = Button(screen, image=logo_btn, bg="light grey", borderwidth=0)
+    my_button = Button(screen, image=logo_btn, bg="light grey", borderwidth=0, command=call2)
     my_button.place(x=558, y=0)
 
     _label = Label(screen,text="------------------------------------------------------------------------------------------------------------------------------------------------------",bg="light grey", fg="White")
@@ -592,7 +617,7 @@ def login():
 
 def SignUP():
     # Signup
-    global root
+    global root1
     global fullName
     global contact
     global Email
@@ -605,23 +630,23 @@ def SignUP():
     global confirm_passwordEntr1
 
 
-    root = Tk()
-    root.geometry("1650x1000")
-    root.title("Sighn up page")
-    root.config(bg="light grey")
+    root1 = Tk()
+    root1.geometry("1650x1000")
+    root1.title("Sighn up page")
+    root1.config(bg="light grey")
 
     my_Image = ImageTk.PhotoImage(Image.open("Rectangle 21.png"))
-    myLabel = Label(root, image=my_Image)
+    myLabel = Label(root1, image=my_Image)
     myLabel.place(x=0, y=0)
 
 
     logo_btn = PhotoImage(file="signup_material/lOGO.png")
     img_label = Label(image=logo_btn)
 
-    my_button = Button(root, image=logo_btn,bg="light grey", borderwidth=0)
+    my_button = Button(root1, image=logo_btn,bg="light grey", borderwidth=0, command= signupcall)
     my_button.pack()
 
-    _label= Label(root, text="-------------------------------------------------------------------------------------------------------------------------------------------------", bg="light grey", fg="White")
+    _label= Label(root1, text="-------------------------------------------------------------------------------------------------------------------------------------------------", bg="light grey", fg="White")
     _label.place(x= 600, y= 81)
 
     fullName = StringVar()
@@ -630,38 +655,38 @@ def SignUP():
     passcode = StringVar()
     cpasscode = StringVar()
 
-    full_name = Label(root, text="Full Name:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+    full_name = Label(root1, text="Full Name:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
     full_name.place(x=600, y=110)
 
-    conntactNum = Label(root, text="Contact Number:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+    conntactNum = Label(root1, text="Contact Number:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
     conntactNum.place(x=600, y=155)
 
-    email = Label(root, text="Email:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+    email = Label(root1, text="Email:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
     email.place(x=600, y=200)
 
-    password = Label(root, text="Password:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+    password = Label(root1, text="Password:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
     password.place(x=600, y=250)
 
-    confirm_password = Label(root, text="Confirm Password:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+    confirm_password = Label(root1, text="Confirm Password:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
     confirm_password.place(x=600, y=300)
 
-    sighntext = Label(root, text="SIGN UP TO SUMS FOOD", fg="#D98141",bg="light grey", font=("Times New Roman", 30, "bold"), pady=15)
+    sighntext = Label(root1, text="SIGN UP TO SUMS FOOD", fg="#D98141",bg="light grey", font=("Times New Roman", 30, "bold"), pady=15)
     sighntext.place(x=830, y=0)
 
     # Creating an empty label for input/entry for the labels.
-    fullNameEntry = Entry(root, width=40,textvariable=fullName, bd=3, relief=SUNKEN, highlightbackground="#D98141", highlightcolor="#D98141", highlightthickness=2)
+    fullNameEntry = Entry(root1, width=40,textvariable=fullName, bd=3, relief=SUNKEN, highlightbackground="#D98141", highlightcolor="#D98141", highlightthickness=2)
     fullNameEntry.place(x=860, y=110)
 
-    ContactNumEntr1 = Entry(root, width=40, bd=3,textvariable=contact, relief=SUNKEN, highlightcolor="#D98141", highlightbackground="#D98141", highlightthickness=2)
+    ContactNumEntr1 = Entry(root1, width=40, bd=3,textvariable=contact, relief=SUNKEN, highlightcolor="#D98141", highlightbackground="#D98141", highlightthickness=2)
     ContactNumEntr1.place(x=860, y=155)
 
-    emailEntr1 = Entry(root, width=40, bd=3,textvariable=Email, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141", highlightbackground="#D98141")
+    emailEntr1 = Entry(root1, width=40, bd=3,textvariable=Email, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141", highlightbackground="#D98141")
     emailEntr1.place(x=860, y=200)
 
-    passwordEntr1 = Entry(root, width=40,textvariable=passcode, bd=3, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141", highlightbackground="#D98141")
+    passwordEntr1 = Entry(root1, width=40,textvariable=passcode, bd=3, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141", highlightbackground="#D98141")
     passwordEntr1.place(x=860, y=250)
 
-    confirm_passwordEntr1 = Entry(root, width=40, textvariable=cpasscode ,  bd=3, relief=SUNKEN, highlightbackground="#D98141", highlightcolor="#D98141", highlightthickness=2)
+    confirm_passwordEntr1 = Entry(root1, width=40, textvariable=cpasscode ,  bd=3, relief=SUNKEN, highlightbackground="#D98141", highlightcolor="#D98141", highlightthickness=2)
     confirm_passwordEntr1.place(x=860, y=300)
 
     # Now Create buttons to login or for sighnup.
@@ -669,10 +694,10 @@ def SignUP():
     img2_label = Label(image=signUp_btn)
 
     global my_button2
-    my_button2 = Button(root, image=signUp_btn,bg="light grey", borderwidth=0, command=register)
+    my_button2 = Button(root1, image=signUp_btn,bg="light grey", borderwidth=0, command=register)
     my_button2.place(x= 600, y= 350)
 
-    choice_lbl = Label(root, text="Or SignUp Using: ", bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
+    choice_lbl = Label(root1, text="Or SignUp Using: ", bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
     choice_lbl.place(x= 610, y=420)
 
     # Button to pass into login page
@@ -681,7 +706,7 @@ def SignUP():
     facBok_btn = PhotoImage(file="signup_material/facebook.png")
     img3_label = Label(image=facBok_btn)
 
-    my_button3 = Button(root, image=facBok_btn,bg="light grey", borderwidth=0)
+    my_button3 = Button(root1, image=facBok_btn,bg="light grey", borderwidth=0)
     my_button3.bind("<Button-1>", lambda x: webbrowser.open_new("https://www.facebook.com"))
     my_button3.place(x= 600, y= 480)
 
@@ -690,11 +715,11 @@ def SignUP():
     Google_btn = PhotoImage(file="signup_material/Google.png")
     img4_label = Label(image=Google_btn)
 
-    my_button4 = Button(root, image=Google_btn,bg="light grey", borderwidth=0)
+    my_button4 = Button(root1, image=Google_btn,bg="light grey", borderwidth=0)
     my_button4.bind("<Button-1>", lambda x: webbrowser.open_new("https://www.google.com"))
     my_button4.place(x= 850, y= 480)
 
-    acntLbl = Label(root, text="Already have an account?..",  bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
+    acntLbl = Label(root1, text="Already have an account?..",  bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
     acntLbl.place(x = 600, y=580)
 
 
@@ -702,13 +727,15 @@ def SignUP():
     Login_btn = PhotoImage(file="signup_material/Login.png")
     img5_label = Label(image=Login_btn)
 
-    my_button5 = Button(root, image=Login_btn,bg="light grey", borderwidth=0, command=login)
+    my_button5 = Button(root1, image=Login_btn,bg="light grey", borderwidth=0, command=login)
     my_button5.place(x= 600, y= 621)
 
 
 
 
-    root.mainloop()
+    root1.mainloop()
+
+
 
 
 if __name__ == '__main__':
