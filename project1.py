@@ -4,7 +4,6 @@ from tkinter import messagebox
 from PIL import ImageTk, Image
 import os
 
-
 def main():
     nextpage = SignUP()
     print(nextpage)

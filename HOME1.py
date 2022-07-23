@@ -1,8 +1,9 @@
 
-
 from tkinter import *
 from PIL import ImageTk, Image
-# import project1
+
+import project1
+from project1 import SignUP, login
 
 window = Tk()
 window.title("SUMS FOOD")
@@ -69,6 +70,4 @@ and get connected with us.
 F4 = LabelFrame(window)
 
 window.mainloop()
-
-
 
