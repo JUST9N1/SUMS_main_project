@@ -5,6 +5,7 @@ import webbrowser
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
+
 import os
 
 
@@ -64,6 +65,7 @@ def register():
         file.write(emailinfo + "\n")
         file.write(passwordinfo + "\n")
         file.write((cpasswordinfo + "\n"))
+
         file.close()
         messagebox.showinfo("Success", "SignUp success go to login page.")
 
@@ -85,15 +87,19 @@ def signupcall():
     root1.destroy()
     print(AboutUs())
 
+
 def loginstat():
+    fullname1=fullName.get()
     username1 = info.get()
     password = paswrd.get()
+    contactinfo = contact.get()
     email1Entry.delete(0, END)
     password1Entry.delete(0, END)
-
+    fullname = fullName.get()
 
     list_of_files = os.listdir()
     if username1 in list_of_files:
+
         file1 = open(username1, "r")
         verify = file1.read().splitlines()
         if password in verify:
@@ -155,13 +161,17 @@ def loginstat():
                                     bg=bg_color)
                     F1.place(x=0, y=80, relwidth=1)
 
+                    # list_of_files = os.listdir()
+                    # if fullname1 in list_of_files:
+                    # file = open(emailinfo + ".txt" + "r")
                     cname_lbl = Label(F1, text="Customer Name", bg=bg_color, fg="white", font=font).grid(row=0,column=0,padx=20,pady=5)
                     cname_txt = Entry(F1, width=15, textvariable=self.c_name, font=("aerial", 15), bd=7,relief=SUNKEN)
-                    cname_txt.insert(0, username1)
+                    cname_txt.insert(INSERT, "Customer NAme")
                     cname_txt.grid(row=0, column=1, pady=5, padx=10)
 
                     cphn_lbl = Label(F1, text="Phone No.", bg=bg_color, fg="white", font=font).grid(row=0, column=2,padx=20, pady=5)
                     cphn_txt = Entry(F1, width=15, textvariable=self.c_phone, font=("aerial", 15), bd=7,relief=SUNKEN)
+                    # cphn_txt.insert(INSERT, password)
                     cphn_txt.grid(row=0, column=3, pady=5, padx=10)
 
                     cbill_lbl = Label(F1, text="Bill Number", bg=bg_color, fg="white", font=font).grid(row=0, column=4,padx=20, pady=5)
@@ -558,11 +568,11 @@ def login():
     global email1Entry
     global password1Entry
 
-
     screen = Tk()
     screen.geometry("1650x1000")
     screen.title("Login Page")
     screen.configure(bg="light grey")
+
 
     my_pic = Image.open("login_material/login img.png")
     resised = my_pic.resize((550, 690), Image.ANTIALIAS)
@@ -707,7 +717,7 @@ def SignUP():
     img3_label = Label(image=facBok_btn)
 
     my_button3 = Button(root1, image=facBok_btn,bg="light grey", borderwidth=0)
-    my_button3.bind("<Button-1>", lambda x: webbrowser.open_new("https://www.facebook.com"))
+    my_button3.bind("<Button-1>", lambda x: webbrowser.open_new("https://www.facebook.com/SUMS-Foods-106541142143839"))
     my_button3.place(x= 600, y= 480)
 
     # Google button
@@ -737,9 +747,9 @@ def SignUP():
 
 
 
-
 if __name__ == '__main__':
     mainfunc()
+
 
 
 

@@ -1,0 +1,23 @@
+			Welcome to SUMS food
+
+Bill Number : 2603
+Customer Name: Customer NAme
+Phone Number: 998798
+*************************************************************
+ Products 			 QTY			Price 
+*************************************************************
+ Cake			 1			100
+ Burger			 1			250
+ Sandwich			 9			675
+ Pizza			 1			300
+ Coffee			 1			90
+ Lemonade			 9			1080
+ IceTea			 1			60
+ Large pizza			 1			660
+ FrozenMo			 1			150
+=============================================================
+ Items Tax 				Rs 66.25
+ Drinks Tax 				Rs 61.5
+ Specials Tax 				Rs 40.5
+ Total Bill :  				3533.25
+=============================================================

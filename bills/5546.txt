@@ -1,0 +1,27 @@
+			Welcome to SUMS food
+
+Bill Number : 5546
+Customer Name: gautam
+Phone Number: 98559642
+*************************************************************
+ Products 			 QTY			Price 
+*************************************************************
+ Cake			 1			100
+ Burger			 1			250
+ Sandwich			 1			75
+ Pizza			 1			300
+ Lemonade			 1			120
+ IceTea			 1			60
+ Lime water			 1			110
+ Diet Coke			 0			60
+ Large pizza			 1			660
+ French Fries			 1			150
+ Hot chillies			 1			250
+ Hokkah			 9			3150
+ Light Wine			 1			900
+=============================================================
+ Items Tax 				Rs 36.25
+ Drinks Tax 				Rs 17.5
+ Specials Tax 				Rs 255.5
+ Total Bill :  				6494.25
+=============================================================
