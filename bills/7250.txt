@@ -1,0 +1,22 @@
+			Welcome to SUMS food
+
+Bill Number : 7250
+Customer Name: Customer NAme
+Phone Number: fjlakjflk
+*************************************************************
+ Products 			 QTY			Price 
+*************************************************************
+ Cake			 1			100
+ Burger			 1			250
+ Pizza			 1			300
+ Lemonade			 1			120
+ Lime water			 1			110
+ Large pizza			 1			660
+ Hot chillies			 1			250
+ Hokkah			 1			350
+=============================================================
+ Items Tax 				Rs 32.5
+ Drinks Tax 				Rs 11.5
+ Specials Tax 				Rs 63.0
+ Total Bill :  				2247.0
+=============================================================

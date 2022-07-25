@@ -1,0 +1,22 @@
+			Welcome to SUMS food
+
+Bill Number : 3727
+Customer Name: Customer NAme
+Phone Number: 981125648
+*************************************************************
+ Products 			 QTY			Price 
+*************************************************************
+ Cake			 1			100
+ Burger			 1			250
+ Sandwich			 1			75
+ Lemonade			 9			1080
+ Lime water			 1			110
+ Diet Coke			 0			60
+ French Fries			 9			1350
+ FrozenMo			 9			1350
+=============================================================
+ Items Tax 				Rs 21.25
+ Drinks Tax 				Rs 62.5
+ Specials Tax 				Rs 135.0
+ Total Bill :  				4593.75
+=============================================================

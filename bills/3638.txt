@@ -1,0 +1,23 @@
+			Welcome to SUMS food
+
+Bill Number : 3638
+Customer Name: Subash
+Phone Number: 9845626
+*************************************************************
+ Products 			 QTY			Price 
+*************************************************************
+ Cake			 1			100
+ Burger			 1			250
+ Sandwich			 1			75
+ Pizza			 1			300
+ Coffee			 1			90
+ Lemonade			 1			120
+ Lime water			 1			110
+ Hot chillies			 1			250
+ FrozenMo			 1			150
+=============================================================
+ Items Tax 				Rs 36.25
+ Drinks Tax 				Rs 16.0
+ Specials Tax 				Rs 20.0
+ Total Bill :  				1517.25
+=============================================================

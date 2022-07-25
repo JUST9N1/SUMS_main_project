@@ -5,7 +5,6 @@ import webbrowser
 from tkinter import *
 from tkinter import messagebox
 from PIL import ImageTk, Image
-
 import os
 
 
@@ -19,7 +18,7 @@ def AboutUs():
     myLabel = Label(main1, image=my_Image)
     myLabel.place(x=0, y=0)
 
-    ext_btn = Button(main1, text="Exit", relief=SOLID, bg= "#F5B85B",width=19,pady=6, fg="white", font=("times new roman", 20, "bold"), borderwidth=0, command= backSigup)
+    ext_btn = Button(main1, text="Back", relief=SOLID, bg= "#F5B85B",width=19,pady=6, fg="white", font=("times new roman", 20, "bold"), borderwidth=0, command= backSigup)
     ext_btn.place(x= 175, y= 634)
 
     main1.mainloop()
@@ -707,7 +706,7 @@ def SignUP():
     my_button2 = Button(root1, image=signUp_btn,bg="light grey", borderwidth=0, command=register)
     my_button2.place(x= 600, y= 350)
 
-    choice_lbl = Label(root1, text="Or SignUp Using: ", bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
+    choice_lbl = Label(root1, text="Get connected with us: ", bd=3, font=("times new roman", 19, "bold"), fg="white", bg="light grey")
     choice_lbl.place(x= 610, y=420)
 
     # Button to pass into login page
