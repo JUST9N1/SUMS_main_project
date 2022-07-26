@@ -1,4 +1,5 @@
 
+from ssl import VerifyFlags
 from tkinter import *
 import os
 import sqlite3
@@ -180,8 +181,71 @@ def SignUP():
     Checkbutton(text='Show',offvalue=0,variable=showww,bg='white',command=show2).place(x=1135,y=301)
     
     
+     # function for securiy question
+    def sques():
+            a = StringVar()
+            b = StringVar()
+            d = StringVar()
+
+            Frame(root1, height=330, width= 350, bg= "white").place(x= 775, y= 210)
+            Label(text="Security Questions", font=("Aerial", 16, "bold"), bg="white").place(x=847, y=210)
+
+            Label(text="Q1: What is your favourite food?",bg='white').place(x=805,y=255)
+            Entry(root1, textvariable=a).place(x=805, y=280, width=290, height=30)
+            
+            Label(text="Q2: What is the name of your first pet?",bg='white').place(x=805,y=330)
+            Entry(root1, textvariable=b).place(x=805, y=350, width=290, height=30)
+
+            Label(text="Q3: What is the name of your childhood best friend?",bg='white').place(x=805,y=400)
+            Entry(root1,textvariable=d).place(x=805, y=420, width=290, height=30)
+            
+            Button(root1,text="SIGN UP",font=('Arial',10,'bold'),fg='white',bg="#338bd7",width=35,height=2,cursor='hand2',command=verify2).place(x=805, y=475)
+            
+    
+          #  verification for security questions
+    def verify2():
+            aa=a.get()
+            bb=b.get()
+            cc=d.get()
+
+            if aa=="" or bb=="" or cc=="":
+                messagebox.showerror("Security Questions","One or more fields empty")
+            else:
+                submit()
+            
+        
+    #     #database connection for signup
+    # def submit():
+    #         global submit
+    #         conn=sqlite3.connect('Customer.db')
+    #         c=conn.cursor()
+    #         c.execute("INSERT INTO User VALUES (:fullNameEntry1, :emailEntr, :contactNumEntr, :passwordEntr, :confirm_passwordEntr, :q1, :q2, :q3, :status)",
+    #         {
+    #             'fullNameEntry1':fullNameEntry1.get(),
+    #             'emailEntr':emailEntr.get(),
+    #             'ContactNumEntr':ContactNumEntr.get(),
+    #             'passwordEntr':passwordEntr.get(),
+    #             'confirm_passwordEntr':confirm_passwordEntr.get(),
+    #             # 'q1':a.get(),
+    #             # 'q2':b.get(),
+    #             # 'q3':d.get(),
+    #             })
+    #         conn.commit()
+    #         conn.close()
+
+    #         messagebox.showinfo("Signup","User Registered Successfully")
+            
+    #         openlogin()
+            
+    
+    
+    
       #verification function to check the validation of entered data
     def verify():
+        global a
+        global b
+        global d
+        
         a=fullNameEntry1.get()
         b=emailEntr.get()
         d=ContactNumEntr.get()
@@ -199,45 +263,44 @@ def SignUP():
         elif e!=f:
             messagebox.showerror("Signup","Passwords Mismatch")
         else:
-            try:
+         try:
                 int(d)
                 sques()
-                 
-            except:
+         except:
                 messagebox.showerror("Signup","Invalid Phone Number")
                 
                
     
     
         # function for securiy question
-        def sques():
-            a = StringVar()
-            b = StringVar()
-            d = StringVar()
+        # def sques():
+        #     a = StringVar()
+        #     b = StringVar()
+        #     d = StringVar()
 
-            Frame(height=330, width= 350, bg= "white").place(x= 775, y= 210)
-            Label(text="Security Questions", font=("Aerial", 16, "bold"), bg="white").place(x=847, y=210)
+        #     Frame(height=330, width= 350, bg= "white").place(x= 775, y= 210)
+        #     Label(text="Security Questions", font=("Aerial", 16, "bold"), bg="white").place(x=847, y=210)
 
-            Label(text="Q1: What is your favourite food?",bg='white').place(x=805,y=255)
-            Entry(root1, textvariable=a).place(x=805, y=280, width=290, height=30)
+        #     Label(text="Q1: What is your favourite food?",bg='white').place(x=805,y=255)
+        #     Entry(root1, textvariable=a).place(x=805, y=280, width=290, height=30)
             
-            Label(text="Q2: What is the name of your first pet?",bg='white').place(x=805,y=330)
-            Entry(root1, textvariable=b).place(x=805, y=350, width=290, height=30)
+        #     Label(text="Q2: What is the name of your first pet?",bg='white').place(x=805,y=330)
+        #     Entry(root1, textvariable=b).place(x=805, y=350, width=290, height=30)
 
-            Label(text="Q3: What is the name of your childhood best friend?",bg='white').place(x=805,y=400)
-            Entry(root1,textvariable=d).place(x=805, y=420, width=290, height=30)
+        #     Label(text="Q3: What is the name of your childhood best friend?",bg='white').place(x=805,y=400)
+        #     Entry(root1,textvariable=d).place(x=805, y=420, width=290, height=30)
             
             
-         #verification for security questions
-        def verify2():
-            aa=a.get()
-            bb=b.get()
-            cc=d.get()
+        # #  verification for security questions
+        # def verify2():
+        #     aa=a.get()
+        #     bb=b.get()
+        #     cc=d.get()
 
-            if aa=="" or bb=="" or cc=="":
-                messagebox.showerror("Security Questions","One or more fields empty")
-            else:
-                submit()
+        #     if aa=="" or bb=="" or cc=="":
+        #         messagebox.showerror("Security Questions","One or more fields empty")
+        #     else:
+        #         submit()
             
         
         #database connection for signup
@@ -261,9 +324,11 @@ def SignUP():
             conn.close()
 
             messagebox.showinfo("Signup","User Registered Successfully")
-
+            
             openlogin()
-    
+            
+
+            # Button(root1,text="SIGN UP",font=('Arial',10,'bold'),fg='white',bg="#338bd7",width=35,height=2,cursor='hand2',command=verify2).place(x=805, y=475)
             # Now Create buttons to login or for sighnup.
     signUp_btn = PhotoImage(file="signup_material/signUp.png")
     img2_label = Label(image=signUp_btn)
