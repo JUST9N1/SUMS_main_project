@@ -13,11 +13,13 @@ def openlogin():
     root1.destroy()
     os.system("python loggingIn.py")
     
-
+def backSignup():
+    main1.destroy()
+    os.system("python signingUp.py")
 
 
 def AboutUs():
-    # root1.destroy()
+    root1.destroy()
     global main1
     main1 = Tk()
     main1.title("SUMS FOOD")
@@ -214,9 +216,7 @@ except:
 
 
 
-def backSignup():
-    main1.destroy()
-    os.system("python signingUp.py")
+
 
 def verify():
     a=fullNameEntry1.get()

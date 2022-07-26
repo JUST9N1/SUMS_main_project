@@ -46,7 +46,7 @@ def login():
         conn.commit()
         conn.close()
         while i>=0:
-                if records[i][2]!=a or records[i][4]!=bb:
+                if records[i][1]!=a or records[i][3]!=bb:
                     i=i-1
                     if i==-1:
                         messagebox.showerror("Login","Invalid Credentials")

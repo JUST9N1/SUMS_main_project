@@ -4,9 +4,6 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import sqlite3, os, random
 
-def tempo():
-    hell = login
-    print(hell)
     
 def calllogIn():
     main1.destroy()
@@ -30,6 +27,18 @@ def AboutUs():
     main1.mainloop()
 
 
+
+global screen
+global email1Entry
+global password1Entry
+ 
+    
+# login frame
+screen = Tk()
+screen.geometry("1650x1000")
+screen.title("Login Page")
+screen.configure(bg="light grey")
+
 def opensignup():
     screen.destroy()
     os.system("python signingUp.py")
@@ -38,201 +47,112 @@ def openstatus():
     screen.destroy()
     os.system("python main.py")
 
-# login function
-def login():
-    global screen
-    global email1Entry
-    global password1Entry
- 
+# tkinter does not support placeholders for entry so following two functions removes the default inserted text once the focus is on the entry box
+def remove(event): #main page email removed
+    a = email1Entry.get()
+    if a == "Enter Your Email":
+        email1Entry.delete(0, END) #removes text in entry box from 0 to end
     
-    # login frame
-    screen = Tk()
-    screen.geometry("1650x1000")
-    screen.title("Login Page")
-    screen.configure(bg="light grey")
+def remove2(event):
+    b = password1Entry.get()
+    if b == "Enter Your Password":
+        password1Entry.delete(0, END)
 
 
-    my_pic = Image.open("login_material/login img.png")
-    resised = my_pic.resize((550, 690), Image.ANTIALIAS)
-    new_pic = ImageTk.PhotoImage(resised)
-    myLabel2 = Label(screen, image=new_pic)
-    myLabel2.place(x=0, y=0)
-
-    logo_btn = PhotoImage(file="signup_material/lOGO.png")
-    img_label = Label(image=logo_btn)
-
-    my_button = Button(screen, image=logo_btn, bg="light grey", borderwidth=0, command=AboutUs)
-    my_button.place(x=558, y=0)
-
-    _label = Label(screen,text="------------------------------------------------------------------------------------------------------------------------------------------------------",bg="light grey", fg="White")
-    _label.place(x=558, y=75)
-
-    sighntext = Label(screen, text="Welcome To Login Page", fg="#D98141", bg="light grey",font=("Times New Roman", 30, "bold"), pady=15)
-    sighntext.place(x=830, y=0)
-
-    email1 = Label(screen, text="Email:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
-    email1.place(x=600, y=200)
-    
-    # Autorisation check
-    def check():
-        a= email1Entry.get()
-        b= password1Entry.get()
-        try:
-            conn = sqlite3.connect("Customer.db")
-            c = conn.cursor()
-            
-            c.execute("SELECT * from User")
-            records = c.fetchall()
-            records=c.fetchall()
-            i=len(records)-1
-            while i>=0:
-                    if records[i][1]!=a or records[i][3]!=b:
-                        i=i-1
-                        if i==-1:
-                            messagebox.showerror("Login","Invalid Credentials")
-                            break
-                    else:
-                        #change user status to active after login and set other users as inactive
-                        c.execute("""UPDATE User SET
-                        status=:inactive
-                        WHERE status=:active""",
-                        {'inactive':False,
-                        'active':True})
-                        conn.commit()
-                        
-                        c.execute("""UPDATE User SET
-                        status= :val
-                        WHERE email = :a""",
-                        {
-                            'val':True,
-                            'a':a
-                        })
-                        conn.commit()
-                        messagebox.showinfo("Login","Logged in Successfully")
-                        openstatus()
-                        break           
-            conn.commit()
-            conn.close()
-        except:
-                messagebox.showerror("Login","Sign Up First")
-                       
-    # tkinter does not support placeholders for entry so following two functions removes the default inserted text once the focus is on the entry box
-    def remove(event):
-        a = email1Entry.get()
-        if a == "Enter Your Email":
-            email1Entry.delete(0, END) #removes text in entry box from 0 to end
-    
-    def remove2(event):
-        b = password1Entry.get()
-        if b == "Enter Your Password":
-            password1Entry.delete(0, END)
-    
-    
-    # global screen
-    # screen = Tk()
-    # screen.geometry("1650x1000")
-    # screen.title("Login Page")
-    # screen.configure(bg="light grey")
+   
+def show():
+    if (showw.get()==1): 
+        password1Entry.config(show="")
+    else:
+        password1Entry.config(show="*")
+        
 
 
-    # my_pic = Image.open("login_material/login img.png")
-    # resised = my_pic.resize((550, 690), Image.ANTIALIAS)
-    # new_pic = ImageTk.PhotoImage(resised)
-    # myLabel2 = Label(screen, image=new_pic)
-    # myLabel2.place(x=0, y=0)
 
-    # logo_btn = PhotoImage(file="signup_material/lOGO.png")
-    # img_label = Label(image=logo_btn)
+my_pic = Image.open("login_material/login img.png")
+resised = my_pic.resize((550, 690), Image.ANTIALIAS)
+new_pic = ImageTk.PhotoImage(resised)
+myLabel2 = Label(screen, image=new_pic)
+myLabel2.place(x=0, y=0)
 
-    # my_button = Button(screen, image=logo_btn, bg="light grey", borderwidth=0, command=AboutUs)
-    # my_button.place(x=558, y=0)
+logo_btn = PhotoImage(file="signup_material/lOGO.png")
+img_label = Label(image=logo_btn)
 
-    # _label = Label(screen,text="------------------------------------------------------------------------------------------------------------------------------------------------------",bg="light grey", fg="White")
-    # _label.place(x=558, y=75)
+my_button = Button(screen, image=logo_btn, bg="light grey", borderwidth=0, command=AboutUs)
+my_button.place(x=558, y=0)
 
-    # sighntext = Label(screen, text="Welcome To Login Page", fg="#D98141", bg="light grey",font=("Times New Roman", 30, "bold"), pady=15)
-    # sighntext.place(x=830, y=0)
+_label = Label(screen,text="------------------------------------------------------------------------------------------------------------------------------------------------------",bg="light grey", fg="White")
+_label.place(x=558, y=75)
 
-    # email1 = Label(screen, text="Email:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
-    # email1.place(x=600, y=200)
+sighntext = Label(screen, text="Welcome To Login Page", fg="#D98141", bg="light grey",font=("Times New Roman", 30, "bold"), pady=15)
+sighntext.place(x=830, y=0)
 
-    email1Entry = Entry(screen, width=40, bd=3, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141",highlightbackground="#D98141")
-    email1Entry.insert(0, "Enter Your Email")
-    email1Entry.place(x=750, y=200)
-    email1Entry.bind("<FocusIn>", remove) #bind function is used to know the mouse movement
+email1 = Label(screen, text="Email:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+email1.place(x=600, y=200)
 
-    
-    password1 = Label(screen, text="Password:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
-    password1.place(x=600, y=250)
+email1Entry = Entry(screen, width=40, bd=3, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141",highlightbackground="#D98141")
+email1Entry.insert(0, "Enter Your Email")
+email1Entry.place(x=750, y=200)
+email1Entry.bind("<FocusIn>", remove) #bind function is used to know the mouse movement
 
-    password1Entry = Entry(screen, width=40, bd=3, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141",highlightbackground="#D98141")
-    password1Entry.insert(0, "Enter Your Password")
-    password1Entry.place(x=750, y=250)
-    password1Entry.bind("<FocusIn>", remove2)
-    showw = IntVar(value=1)
-    
-    def show():
-        if (showw.get()==1): 
-            password1Entry.config(show="")
-        else:
-            password1Entry.config(show="*")
-            
-    # Show password checkbutton
-    Checkbutton(text="Show", offvalue=0, variable=showw, bg="white", command=show).place(x=850 , y=350 )
-            
-    # forgot password and sigup links
-    Button(screen, text="Forgot Password?", fg="blue", bg= "white", cursor="hand2", command=reset).place(x= 990, y= 305)
-    # signup button here
-    
-    
-    # Verification check
-    def verify():
-        a = email1Entry.get()
-        b = password1Entry.get()
-        if (a=="" or a=="Enter Your Email") or (b=="" or b=="Enter Your Password"):
-            messagebox.showerror("Login","One or More Fields Empty.")
-        elif "@" and ".com" not in a:
-            messagebox.showerror("Password Reset","Invalid Email")
-        elif len(b)<6:
-            messagebox.showerror("Password Reset","Password must be more than 6 characters")
-        else:
-            check()
-            
-    # login button
-    Login_btn = PhotoImage(file="signup_material/Login.png")
-    img5_label = Label(image=Login_btn)
 
-    my_button5 = Button(screen, image=Login_btn, bg="light grey", borderwidth=0,command=verify)
-    my_button5.place(x=600, y=351)
+password1 = Label(screen, text="Password:", fg="white", bg="light grey", font=("Times New Roman", 20, "italic"))
+password1.place(x=600, y=250)
 
-    NoacntLbl = Label(screen, text="Doesn't have an Account? ", width=20, font=("times new roman", 30, "italic"),fg="white", bg="light grey")
-    NoacntLbl.place(x=590, y=450)
+password1Entry = Entry(screen, width=40, bd=3, relief=SUNKEN, highlightthickness=2, highlightcolor="#D98141",highlightbackground="#D98141")
+password1Entry.insert(0, "Enter Your Password")
+password1Entry.place(x=750, y=250)
+password1Entry.bind("<FocusIn>", remove2)
+showw = IntVar(value=1)
 
-    signUp_btn = PhotoImage(file="signup_material/signUp.png")
-    img2_label = Label(image=signUp_btn)
 
-    my_button2 = Button(screen, image=signUp_btn, bg="light grey", borderwidth=0, command=opensignup)
-    my_button2.place(x=600, y=530)
 
-# forgot password functionality
+NoacntLbl = Label(screen, text="Doesn't have an Account? ", width=20, font=("times new roman", 30, "italic"),fg="white", bg="light grey")
+NoacntLbl.place(x=590, y=450)
+
+signUp_btn = PhotoImage(file="signup_material/signUp.png")
+img2_label = Label(image=signUp_btn)
+
+my_button2 = Button(screen, image=signUp_btn, bg="light grey", borderwidth=0, command=opensignup)
+my_button2.place(x=600, y=530)   
+
+    #verification check
+def verify():
+    a=email1Entry.get()
+    b=password1.get()
+    if (a=="" or a=="Enter Your Email") or (b=="" or b=="Enter Your Password"):
+        messagebox.showerror("Login","One or More Fields Empty.")
+    elif "@" and ".com" not in a:
+        messagebox.showerror("Password Reset","Invalid Email")
+    elif len(b)<6:
+        messagebox.showerror("Password Reset","Password must be more than 6 characters")
+    else:
+        opensignup()
+
+
+
+
 def reset():
-    
-    # creating toplevel
+    global mail_ent
+    global new_ps_ent
+    global new_psc_ent
+    global ans1
+    global num
     global top
     top = Toplevel()
     top.geometry("380x350")
     top.title("Forgot Password")
-    
+
     Frame(top,bg='#b4cef3',height=400,width=400).place(x=0,y=0)
     Label(top, text='RESET PASSWORD', bg="#b4cef3", fg='white', font=('Arial',20,'bold')).place(x=50, y=20)
-    
+
     # remove functionalities for placeholders
     def remove(event):
-        a = email1Entry.get()
+        a = mail_ent.get()
         if a == "Enter Your Email":
-            email1Entry.delete(0, END)
-    
-    def remove2(eventk):
+            mail_ent.delete(0, END)
+
+    def remove2(event):
         b = new_ps_ent.get()
         if b == "New Password":
             new_ps_ent.delete(0, END)
@@ -243,8 +163,8 @@ def reset():
         c = new_psc_ent.get()
         if c == "Confirm New Password":
             new_psc_ent.delete(0, END)
-    
-    
+
+
     # show password functionaliteis for passwords
     def show():
         if (showw.get()== 1):
@@ -253,7 +173,7 @@ def reset():
         else:
             new_ps_ent.config(show= "*")
             
-    
+
     def show2():
         if (showww.get() == 1):
             new_psc_ent.config(show= "")
@@ -261,12 +181,12 @@ def reset():
             new_psc_ent.config(show= "*")
             
     # user inputs
-    
+
     mail_ent = Entry(top)
-    mail_ent.insert(0, "Enter your Email")
+    mail_ent.insert(0, "Enter Your Email")
     mail_ent.place(x= 40, y= 75, width= 290, height= 30)
     mail_ent.bind("<FocusIn>", remove)
-    
+
     # Security questions
     ans1 = StringVar()
     a = "Q1: What is your favourite food? "
@@ -275,10 +195,10 @@ def reset():
     lst= [a, b, c]
     ques = random.choice(lst)
     num = int(ques[1]) - 1
-    Label(top, text=ques, bg= "b4cef3").place(x= 40, y= 118)
+    Label(top, text=ques, bg= "#b4cef3").place(x= 40, y= 118)
     Entry(top, textvariable=ans1).place(x=40, y= 140, width=290, height= 30)
 
-    
+
     # new password
     new_ps_ent=Entry(top)
     new_ps_ent.insert(0, 'New Password') #default text inserted in entry box, 0 is positional argument
@@ -293,12 +213,12 @@ def reset():
     new_psc_ent.bind('<FocusIn>', remove3) #bind function is used to know the mouse movement (if it is clicked or hovering and so on)
     showww=IntVar(value=1)
     Checkbutton(top,text='Show',offvalue=0,variable=showww,bg='#b4cef3',command=show2).place(x=260,y=233)
-   
-    
-    Button(top,text="CONFIRM",font=('Arial',10,'bold'),fg='white',bg="#338bd7",width=16,height=2,cursor='hand2',command=lambda:verify()).place(x=120, y=280)
 
+
+    Button(top,text="CONFIRM",font=('Arial',10,'bold'),fg='white',bg="#338bd7",width=16,height=2,cursor='hand2',command=lambda:verify()).place(x=120, y=280)
     
-     #update new password
+    
+    #update new password
     def update():
         a=mail_ent.get()
         b=ans1.get()
@@ -310,7 +230,7 @@ def reset():
         records=c.fetchall()
         i=len(records)-1
         while i>=0:
-            if records[i][2]!=a or records[i][(6+num)]!=b:
+            if records[i][1]!=a or records[i][(5+num)]!=b:
                 i=i-1
                 if i==-1:
                     messagebox.showerror("Password Reset","Invalid Credentials")
@@ -318,10 +238,10 @@ def reset():
             else:
                 ps_upd=new_ps_ent.get()
                 psc_upd=new_psc_ent.get()
-                c.execute("""UPDATE users SET
-                ps= :new_ps,
-                psc= :new_psc
-                WHERE mail = :a""",
+                c.execute("""UPDATE User SET
+                password = :new_ps,
+                c_password= :new_psc
+                WHERE email = :a""",
                 {
                     'new_ps':ps_upd,
                     'new_psc':psc_upd,
@@ -333,8 +253,10 @@ def reset():
                 break             
         conn.commit()
         conn.close()
-
-    #password verification for forgot password functionality
+        
+        
+        
+     #password verification for forgot password functionality
     def verify():
         a=mail_ent.get()
         b=ans1.get()
@@ -353,6 +275,24 @@ def reset():
             else:
                 update()
 
-login()
+
+
+
+
+
+Login_btn = PhotoImage(file="signup_material/Login.png")
+img5_label = Label(image=Login_btn)
+
+my_button5 = Button(screen, image=Login_btn, bg="light grey", borderwidth=0,command=verify)
+my_button5.place(x=600, y=351)
+
+
+# forgot password and sigup links
+Button(screen, text="Forgot Password?", fg="blue", bg= "white", cursor="hand2", command=reset).place(x= 990, y= 305)
+
+# Show password checkbutton
+Checkbutton(text="Show", offvalue=0, variable=showw, bg="white", command=show).place(x=1010 , y=250 )
+
+
 
 screen.mainloop()
